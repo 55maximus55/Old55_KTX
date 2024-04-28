@@ -16,8 +16,8 @@ class UpdatePlayerControllersSystem : IteratingSystem(allOf(PlayerControllerComp
         val playerContoller = entity.playerController
         if (playerContoller != null) {
             playerContoller.move = 0f
-            if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) playerContoller.move -= 1f
-            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) playerContoller.move += 1f
+            if (Gdx.input.isKeyPressed(Input.Keys.A)) playerContoller.move -= 1f
+            if (Gdx.input.isKeyPressed(Input.Keys.D)) playerContoller.move += 1f
             playerContoller.move = MathUtils.clamp(playerContoller.move, -1f, 1f)
 
             playerContoller.run = Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)
