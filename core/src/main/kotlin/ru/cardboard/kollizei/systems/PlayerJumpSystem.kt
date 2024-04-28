@@ -19,7 +19,10 @@ class PlayerJumpSystem : IteratingSystem(allOf(PlayerControllerComponent::class,
                     if (!jump.isJumping && jump.jumpCounter < jump.maxJumpCount) {
                         val velocity = box2d.body.linearVelocity
                         velocity.y = 700f / 60f
-                        if (wallSlide != null && wallSlide.onWall) velocity.x += 400f / 60f * wallSlide.dir
+                        if (wallSlide != null && wallSlide.onWall) {
+                            velocity.x += 400f / 60f * wallSlide.dir
+                            wallSlide.onWall = false
+                        }
                         box2d.body.linearVelocity = velocity
 
                         jump.isJumping = true

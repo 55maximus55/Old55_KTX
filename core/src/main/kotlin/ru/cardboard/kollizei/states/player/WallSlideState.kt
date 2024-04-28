@@ -38,10 +38,12 @@ class WallSlideState : State<Entity> {
         val box2d = entity.box2d
 
         if (jump != null) jump.jumpCounter = 1
-        if (box2d != null) {
-            val velocity = box2d.body.linearVelocity
-            velocity.y = 0f
-            box2d.body.linearVelocity = velocity
+        if (wallSlide != null) {
+            if (box2d != null && wallSlide.onWall) {
+                val velocity = box2d.body.linearVelocity
+                velocity.y = 0f
+                box2d.body.linearVelocity = velocity
+            }
         }
         if (state != null && wallSlide != null && !wallSlide.onWall) state.stateMachine.changeState(JumpState())
     }
